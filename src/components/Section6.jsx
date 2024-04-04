@@ -55,6 +55,14 @@ export default function Section6() {
             star:"/Star.png"
         }
     ]
+    const getId =(abc)=>{
+        const box = document.getElementById(abc)
+        console.log(box)
+        profile.find((elm)=> elm.id === abc);
+
+    }
+    const [anim , setAnim] = useState(false);
+      const animStyle = {position:'absolute', width:'190px', height:"auto", display:'flex', justifyContent:'center', transition:'ease-in-out 400ms',animationDirection: 'reverse'};
   return (
     <>
     <div className='mt-5'>
@@ -133,18 +141,24 @@ export default function Section6() {
                 <h1 style={{fontSize:"3.5rem", fontWeight:'bold'}}>Get More Update For News</h1>
             </div>
             <p style={{color:'#4F7396'}}>We are 100+ professional software engineers with more than 10 years of experience in delivering super products it because you've seen it.</p>
-            <div className='d-flex align-items-center mt-5'>
+            <div onMouseOver={()=>{setAnim(true)}} onMouseLeave={()=>{setAnim(false)}} className='d-flex align-items-center  mt-5'>
+                <button className='gredientText p-2' style={{ borderRadius:"50px",border:'3px solid #11998E'}}>VIEW ALL PROJECT</button>
+                <div className='rounded-5 gredientArrow' style={anim?animStyle:null}>
+                    <div style={{transform:anim?null:'rotate(-45deg)', color:'white'}}><i className='bi bi-arrow-right mx-1' ></i></div>
+                </div>                        
+            </div>
+            {/* <div className='d-flex align-items-center mt-5'>
                 <button className='gredientText p-2' style={{ borderRadius:"50px",border:'3px solid #11998E'}}>VIEW ALL PROJECT</button>
                 <img src="/Frame 16.png" alt="" />
-            </div>
+            </div> */}
         </div>
         <div className=''>
             {blogs.map((elm)=>{
                 return(
-                    <div className='blog-box'>
-                        <div onMouseOver={()=>setHoverUp(true)} onMouseLeave={()=>setHoverUp(false)}>
+                    <div className='blog-box' id={`blog-box${elm.id}`} onMouseOver={()=>{getId(`blog-box${elm.id}`)}}>
+                        <div onMouseOver={()=>{getId(`${elm.id}`)}} onMouseLeave={()=>{setHoverUp(false)}}>
                             <img src={elm.img} alt="" />
-                            <div className='hoverUp' style={{display: hoverUp?'flex':'none'}}>
+                            <div className='active hoverUp' style={{display: hoverUp?'flex':'none'}}>
                                 <i className='bi bi-arrow-right fs-1'></i>
                             </div>
                         </div>

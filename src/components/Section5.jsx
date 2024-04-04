@@ -15,6 +15,8 @@ export default function Section5() {
             setLeft(left-20);
         }
     }
+    const [anim , setAnim] = useState(false);
+    const animStyle = {position:'absolute', width:'190px', height:"auto", display:'flex', justifyContent:'center', transition:'ease-in-out 400ms',animationDirection: 'reverse'};
   return (
     <>
     <div className='section5'>
@@ -25,10 +27,16 @@ export default function Section5() {
         </div>
         <div>
             <p style={{color:'#4F7396'}}>We Are 100+ Professional Software Engineers With More Than 10 Years Of Experience In Delivering Superior</p>
-            <div className='d-flex align-items-center mt-5'>
+            <div onMouseOver={()=>{setAnim(true)}} onMouseLeave={()=>{setAnim(false)}} className='d-flex align-items-center  mt-5'>
+                <button className='gredientText p-2' style={{ borderRadius:"50px",border:'3px solid #11998E'}}>VIEW ALL PROJECT</button>
+                <div className='rounded-5 gredientArrow' style={anim?animStyle:null}>
+                    <div style={{transform:anim?null:'rotate(-45deg)', color:'white'}}><i className='bi bi-arrow-right mx-1' ></i></div>
+                </div>                        
+            </div>
+            {/* <div className='d-flex align-items-center mt-5'>
                 <button className='gredientText p-2' style={{ borderRadius:"50px",border:'3px solid #11998E'}}>VIEW ALL PROJECT</button>
                 <img src="/Frame 16.png" alt="" />
-            </div>
+            </div> */}
         </div>
       </div>
       <div style={{overflow:'hidden'}}>

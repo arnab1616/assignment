@@ -1,6 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Section4() {
+    const services = [
+        {
+            id:1,
+            h1:'Strategy & Planning',
+            logo:'/s4-il-1 1.png',
+            p:'Lorem ipsum dolor sit amet bibendum elit sit finibus. Maximus sodales parturien lore arcu eros vel erat pede netus qu.',
+            arrow :'/Group 19.png'
+        },
+        {
+            id:2,
+            h1:'Strategy & Planning',
+            logo:'/s4-il-2 1.png',
+            p:'Lorem ipsum dolor sit amet bibendum elit sit finibus. Maximus sodales parturien lore arcu eros vel erat pede netus qu.',
+            arrow :'/Group 19.png'
+
+        },
+        {
+            id:3,
+            h1:'Strategy & Planning',
+            logo:'/s4-il-3 1.png',
+            p:'Lorem ipsum dolor sit amet bibendum elit sit finibus. Maximus sodales parturien lore arcu eros vel erat pede netus qu.',
+            arrow :'/Group 19.png'
+        },
+        {
+            id:4,
+            h1:'Strategy & Planning',
+            logo:'/s4-il-4 1.png',
+            p:'Lorem ipsum dolor sit amet bibendum elit sit finibus. Maximus sodales parturien lore arcu eros vel erat pede netus qu.',
+            arrow :'/Group 19.png'
+        },
+        {
+            id:5,
+            h1:'Strategy & Planning',
+            logo:'/s4-il-5 1.png',
+            p:'Lorem ipsum dolor sit amet bibendum elit sit finibus. Maximus sodales parturien lore arcu eros vel erat pede netus qu.',
+            arrow :'/Group 19.png'
+        },
+        {
+            id:6,
+            h1:'Strategy & Planning',
+            logo:'/s4-il-6 1.png',
+            p:'Lorem ipsum dolor sit amet bibendum elit sit finibus. Maximus sodales parturien lore arcu eros vel erat pede netus qu.',
+            arrow :'/Group 19.png'
+        }
+    ]
     const team = [
         {
             id:1,
@@ -46,8 +91,47 @@ export default function Section4() {
       };
       const mousepusition = useMousePosition();
       console.log(mousepusition)
+      const [anim , setAnim] = useState(false);
+      const animStyle = {position:'absolute', width:'195px', height:"auto", display:'flex', justifyContent:'center', transition:'ease-in-out 400ms',animationDirection: 'reverse'};
+      const animStyle2 = {position:'absolute', width:'163px', height:"auto", display:'flex', justifyContent:'center', transition:'ease-in-out 400ms',animationDirection: 'normal'};
   return (
     <>
+    <div className='container mt-5'>
+        <div className='text-center mb-5'>
+            <p className='gredientText m-0'><i className='bi bi-arrow-right'></i> OUR BEST SERVICES</p>
+            <h1>We Provide Best Services</h1>
+        </div>
+        <div className='services-container'>
+            {services.map((elm)=>{
+                return(
+                    <div className='services text-center' style={{backgroundImage:`url()`, backgroundSize:'cover'}}>
+                        <div style={{position:'absolute',transform:'translate(100%,0%)'}}>
+                            <img src="/Vector (2).png" alt="" />
+                        </div>
+                        <div className='p-2' style={{zIndex:'1'}}>
+                            <img  src={elm.logo} alt="" />
+                            <h1 className='fs-4'>{elm.h1}</h1>
+                            <p>{elm.p}</p>
+                            <img src={elm.arrow} alt="" />
+                        </div>
+                        <div style={{position:'absolute',transform:'translate(0%,-80%)'}}>
+                            <img src="/Vector (1).png" alt="" />
+                        </div>
+                    </div>
+                )
+            })}
+        </div>
+        <div onMouseOver={()=>{setAnim(true)}} onMouseLeave={()=>{setAnim(false)}} className='d-flex align-items-center  mt-5 justify-content-center'>
+            <button className='gredientText p-2' style={{ borderRadius:"50px",border:'3px solid #11998E'}}>VIEW ALL SERVICES</button>
+            <div className='rounded-5 gredientArrow' style={anim?animStyle:null}>
+                <div style={{transform:anim?null:'rotate(-45deg)', color:'white'}}><i className='bi bi-arrow-right mx-1' ></i></div>
+            </div>                        
+        </div>
+        {/* <div className='d-flex align-items-center mt-5 justify-content-center'>
+            <button className='gredientText p-2' style={{ borderRadius:"50px",border:'3px solid #11998E'}}>VIEW ALL SERVICES</button>
+            <img src="/Frame 16.png" alt="" />
+        </div> */}
+    </div>
     <div  className='container mt-5 section4'>
       <div className='grid-container'>
         <div className='fst'>
@@ -95,10 +179,16 @@ export default function Section4() {
                     </div>
                 </div>
                 <div className='d-flex justify-content-between'>
-                    <div className='d-flex align-items-center  justify-content-center'>
+                    <div onMouseOver={()=>{setAnim(true)}} onMouseLeave={()=>{setAnim(false)}} className='d-flex align-items-center'>
+                        <button className='gredientText p-2' style={{ borderRadius:"50px",border:'3px solid #11998E'}}>VIEW ALL SERVICES</button>
+                        <div className='rounded-5 gredientArrow' style={anim?animStyle:null}>
+                            <div style={{transform:anim?null:'rotate(-45deg)', color:'white'}}><i className='bi bi-arrow-right mx-1' ></i></div>
+                        </div>                        
+                    </div>
+                    {/* <div className='d-flex align-items-center  justify-content-center'>
                         <button className='gredientText p-2' style={{ borderRadius:"50px",border:'3px solid #11998E'}}>VIEW ALL SERVICES</button>
                         <img src="/Frame 16.png" alt="" />
-                    </div>
+                    </div> */}
                     <div className='d-flex align-items-center '>
                         <img className='me-2' src='/Frame 49.png' alt="" />
                         <div>
@@ -142,10 +232,16 @@ export default function Section4() {
                 )
             })}
         </div>
-        <div className='d-flex align-items-center mt-5 justify-content-center'>
+        <div onMouseOver={()=>{setAnim(true)}} onMouseLeave={()=>{setAnim(false)}} className='d-flex align-items-center mt-5 justify-content-center'>
+            <button className='gredientText p-2' style={{ borderRadius:"50px",border:'3px solid #11998E'}}>VIEW ALL TEAM</button>
+            <div className='rounded-5 gredientArrow' style={anim?animStyle2:null}>
+                <div style={{transform:anim?null:'rotate(-45deg)', color:'white'}}><i className='bi bi-arrow-right mx-1' ></i></div>
+            </div>                        
+        </div>
+        {/* <div className='d-flex align-items-center mt-5 justify-content-center'>
             <button className='gredientText p-2' style={{ borderRadius:"50px",border:'3px solid #11998E'}}>VIEW ALL SERVICES</button>
             <img src="/Frame 16.png" alt="" />
-        </div>
+        </div> */}
     </div>
     </>
   )

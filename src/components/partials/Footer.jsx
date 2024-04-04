@@ -24,7 +24,7 @@ export default function Footer() {
             </div>
         </div>
       </div>
-      <div className='nav-list'>
+      <div className='nav-list flex-wrap'>
         <div className='nav-list1'>
             <img src="/PNG 3.png" alt="" />
             <p style={{color:'white'}}>Improve Efficiency, Provide A Better Customer Experience With Modern Technolo Services Available</p>
